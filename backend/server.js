@@ -2,13 +2,13 @@ import mongoose from 'mongoose';
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import Data from './database/userdata.js';
 import Registration_api from './routes/Registration.js';
 import profile_api from './routes/profile.js';
 import login_api from './routes/login.js';
 import jwt from 'jsonwebtoken';
 import add_item from './routes/add_item.js';
 import find_items from './routes/find_items.js';
+import add_to_cart from './routes/add_to_cart.js';
 
 dotenv.config();
 
@@ -38,7 +38,9 @@ app.use('/login', login_api);
 app.use('/add_item', add_item);
 
 
-app.use('/Home',find_items);
+app.use('/Home/items',find_items);
+
+app.use('/add_to_cart',add_to_cart);
 
 
 const authenticateToken = (req, res, next) => {

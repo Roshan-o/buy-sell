@@ -9,7 +9,7 @@ add_item.post('/', async (req, res) => {
     try {
         // Check if user already exists by Email or contact_number
         // console.log(req.body);
-        const { itemname, itemprice, itemcategory, itemdescription,seller_id } = req.body.item_data;
+        let { itemname, itemprice, itemcategory, itemdescription,seller_id } = req.body.item_data;
         itemname=itemname.toLowerCase();
         // console.log(itemname, itemprice, itemcategory, itemdescription ,seller_id);
         const newitem = new Items({
