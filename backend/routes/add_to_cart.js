@@ -12,7 +12,8 @@ add_to_cart.post('/', async (req, res) => {
         console.log("User ID:", user_id);
 
         // Generate a secure 6-digit OTP using crypto module
-        const itemotp = crypto.randomInt(100000, 1000000);
+        let itemotp = crypto.randomInt(100000, 1000000);
+
         const status = 0; // 0 means item is in cart
         const newitem = new cart_items({
             itemname,
@@ -21,8 +22,8 @@ add_to_cart.post('/', async (req, res) => {
             itemdescription,
             seller_id,
             buyer_id: user_id,
-            status_item: status,
-            itemotp
+            status: status,
+            itemotp: itemotp
         });
 
 

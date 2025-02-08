@@ -8,7 +8,7 @@ const cart_item = new mongoose.Schema({
     itemdescription: { type: String, required: true },
     seller_id: { type: String, required: true }, // Ensure this is defined
     buyer_id: { type: String, required: true }, // Ensure this is defined
-    status_item: { type: Number, required: true }, // Ensure this is defined
+    status: { type: Number, required: true }, // Ensure this is defined
     itemotp: { type: Number, required: true }, // Ensure this is defined
 });
 
