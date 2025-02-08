@@ -11,11 +11,11 @@ const Order_item=({fetchOrders,items_info})=> {
           order_id: items_info._id
         }
       });
-      console.log('response:cancel', response.data);
+      // console.log('response:cancel', response.data);
+      fetchOrders();
     } catch (error) {
       console.error('Error cancelling order:', error);
     }
-    fetchOrders();
   };
 
 

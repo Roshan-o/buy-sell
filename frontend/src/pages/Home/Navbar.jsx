@@ -25,6 +25,7 @@ function Navbar() {
   // Handle logout
   const handleLogout = () => {
     change_info({});  // Clear user info from context
+    
     localStorage.removeItem("userToken");
     localStorage.removeItem("userId");
     navigate("/"); // Redirect to home page after logout
@@ -42,9 +43,8 @@ function Navbar() {
         onClick={profile_handle}
         className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
       >
-        Profile
+        {info.lastname ? info.lastname : "Profile"}
       </button>
-
       {/* Home Link */}
       <Link
         to="/home"
@@ -103,7 +103,12 @@ function Navbar() {
       >
         Orders
       </Link>
-
+      <Link 
+      to='/delivary'
+      className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
+      >
+        Delivary
+      </Link>
       {/* History Link */}
       <Link
         to="/history"

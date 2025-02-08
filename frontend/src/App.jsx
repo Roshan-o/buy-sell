@@ -10,6 +10,7 @@ import Login from './pages/Registration/Login';
 import { AppProvider } from './MyContext';
 import Seller from './pages/Home/seller';
 import ItemsShow from './pages/Item/Items_show';
+import Delivary from './pages/OrderHis/Delivary';
 
 const ProtectedRoute = ({ element }) => {
     const token = localStorage.getItem("userToken");
@@ -31,6 +32,7 @@ function App() {
                     <Route path='/registration' element={<Registration />} />
                     <Route path='/orders' element={<ProtectedRoute element={<Orders />} />} />
                     <Route path='/seller' element={<ProtectedRoute element={<Seller />} />} />
+                    <Route path='/delivary' element={<ProtectedRoute element={<Delivary />} />} />
                     <Route path="/" element={<Navigate to="/login" replace />} />
                 </Routes>
             </BrowserRouter>
