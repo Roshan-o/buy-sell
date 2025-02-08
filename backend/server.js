@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken';
 import add_item from './routes/add_item.js';
 import find_items from './routes/find_items.js';
 import add_to_cart from './routes/add_to_cart.js';
+import get_cart from './routes/get_cart.js';
 
 dotenv.config();
 
@@ -41,6 +42,8 @@ app.use('/add_item', add_item);
 app.use('/Home/items',find_items);
 
 app.use('/add_to_cart',add_to_cart);
+
+app.use('/cart',get_cart);
 
 
 const authenticateToken = (req, res, next) => {

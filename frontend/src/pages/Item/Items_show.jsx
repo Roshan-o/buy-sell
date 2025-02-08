@@ -26,7 +26,7 @@ function ItemsShow() {
                     },
                 });
                 console.log("Items found:", response.data);
-                const filtered = response.data.filter((item) => item.seller_id != userId);
+                const filtered = response.data.filter((item) => item.seller_id !== userId);
                 setItems(filtered);
             } catch (error) {
                 console.error("Error fetching items:", error);

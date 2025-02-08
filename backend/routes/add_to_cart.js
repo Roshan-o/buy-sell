@@ -10,24 +10,25 @@ add_to_cart.post('/', async (req, res) => {
         let { itemname, itemprice, itemcategory, itemdescription, seller_id } = item_info;
         console.log("Item info:", item_info);
         console.log("User ID:", user_id);
-        itemname = itemname.toLowerCase();
 
         // Generate a secure 6-digit OTP using crypto module
-        const itemotp = crypto.randomInt(100000, 1000000);  
-
+        const itemotp = crypto.randomInt(100000, 1000000);
+        const status = 0; // 0 means item is in cart
         const newitem = new cart_items({
             itemname,
             itemprice,
             itemcategory,
             itemdescription,
             seller_id,
-            buyyer_id: user_id,
-            status_item: 0,
+            buyer_id: user_id,
+            status_item: status,
             itemotp
         });
 
-        await newitem.save();
 
+        console.log("p");
+        // console.log("New item:", newitem);
+        await newitem.save();
         res.status(200).json({ message: "Success, Item added to cart" });
     } catch (err) {
         console.error("Error during adding item to cart:", err);

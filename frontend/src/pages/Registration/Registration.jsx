@@ -40,14 +40,15 @@ const Registration = () => {
       notifye("Please enter a password");
       return;
     }
-
+    // const hashedPassword = await bcrypt.hash(password, 10);
+    
     const userdata = {
       firstname,
       lastname,
       Email: EmailAdress,
       contact_number: number,
       age,
-      password,
+      password
     };
 
     try {

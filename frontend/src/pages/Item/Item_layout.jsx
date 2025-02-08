@@ -2,14 +2,18 @@ import React from 'react';
 import axios from 'axios';
 import { useAppContext } from "../../MyContext";
 const ItemLayout = ({ item_info}) => {
+
 const { info } = useAppContext();
     if (!item_info) return null; // ✅ Avoid errors if item_info is undefined
     const userId = info.userId; // ✅ Extract userId from context
+
     const { itemname, itemcategory, itemdescription, itemprice } = item_info;
+    
     const handle_add_to_cart = async () => {
         console.log(`Adding ${itemname} to cart...`);
 
         try {
+            console.log('userId:', userId);
             const response = await axios.post('http://localhost:8000/add_to_cart', {
                 item_info: item_info, // ✅ Corrected
                 user_id: userId, // ✅ Pass userId from props
