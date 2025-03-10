@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import { useAppContext } from "../../MyContext";
+import { Link } from "react-router-dom";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -156,9 +157,16 @@ const Registration = () => {
         <button
           type="submit"
           className="flex justify-center items-center text-center bg-gray-400 px-2 my-1 py-1 w-full"
+          onClick={CreateAcc}
         >
           Create Account
         </button>
+        <div className='flex justify-center items-center w-full text-sm'>
+          have an account?{' '}
+        <Link to='/login' className='hover:text-orange-300'>
+            Sign In
+          </Link>
+        </div>
         <Toaster />
       </form>
     </div>

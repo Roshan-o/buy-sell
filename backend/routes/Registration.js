@@ -9,7 +9,7 @@ const Registration_api = express();
 
 Registration_api.post('/', async (req, res) => {
     const { firstname, lastname, Email, contact_number, age, password } = req.body.userdata;
-
+    
     try {
         // Check if user already exists by Email or contact_number
         const user = await Data.findOne({

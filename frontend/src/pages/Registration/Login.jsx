@@ -89,6 +89,7 @@ const Login = () => {
         <button
           type='submit'
           className='bg-gray-400 my-2 w-full px-3 hover:shadow-2xl hover:scale-103 py-1'
+          onclick={handleLogin}
         >
           Enter
         </button>
