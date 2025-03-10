@@ -56,6 +56,10 @@ const Registration = () => {
       const response = await axios.post("http://localhost:8000/Registration", {
         userdata,
       });
+      const token = response.data.token;
+      // const user = response.data.userInfo;
+      localStorage.setItem("userToken", token);
+      // localStorage.setItem("userId", user._id);
 
       console.log("Response Status:", response.status);
 

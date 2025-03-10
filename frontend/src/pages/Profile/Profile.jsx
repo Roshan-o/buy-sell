@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Home/Navbar";
 
-// ✅ Fixed props destructuring
+
 function F({ first, second }) {
   return (
     <div>
@@ -14,9 +14,12 @@ function F({ first, second }) {
 }
 
 function Profile() {
+  const handleEdit=()=>{
+  
+  }
   const { userId } = useParams();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // ✅ Added loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -46,7 +49,8 @@ function Profile() {
           <F first="Last name" second={user.lastname} />
           <F first="Contact Number" second={user.contact_number} />
           <F first="Email address" second={user.Email} />
-          <button className="bg-gray-400 px-2 py-1 mb-2 rounded w-full">Edit</button>
+          <button className="bg-gray-400 px-2 py-1 mb-2 rounded w-full"
+          >Edit</button>
         </div>
       </div>
     </div>

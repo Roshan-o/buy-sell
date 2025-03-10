@@ -30,7 +30,7 @@ const Login = () => {
 
         // Store token & userId securely
         localStorage.setItem("userToken", token);
-        localStorage.setItem("userId", user._id);
+        // localStorage.setItem("userId", user._id);
 
         // Update user context
         const infouser = {
@@ -89,7 +89,7 @@ const Login = () => {
         <button
           type='submit'
           className='bg-gray-400 my-2 w-full px-3 hover:shadow-2xl hover:scale-103 py-1'
-          onclick={handleLogin}
+          onClick={handleLogin}
         >
           Enter
         </button>

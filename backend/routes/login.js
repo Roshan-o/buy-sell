@@ -19,7 +19,7 @@ login_api.post('/', async (req, res) => {
         }
 
         // Find user by Email and password
-        const user = await Data.findOne({ Email: Email, password: password });
+        const user = await Data.findOne({ Email: Email });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }

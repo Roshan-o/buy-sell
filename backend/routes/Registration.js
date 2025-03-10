@@ -2,14 +2,17 @@
 import express from 'express';
 // Importing the default export
 import Data from '../database/userdata.js';
-
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 // import Registration from '../../frontend/src/pages/Registration/Registration.jsx';
-
+dotenv.config();
 const Registration_api = express();
 
 Registration_api.post('/', async (req, res) => {
     const { firstname, lastname, Email, contact_number, age, password } = req.body.userdata;
-    
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     try {
         // Check if user already exists by Email or contact_number
         const user = await Data.findOne({
@@ -18,7 +21,7 @@ Registration_api.post('/', async (req, res) => {
                 { contact_number } // Exact match for contact_number
             ]
         });
-
+        
         if (user) {
             res.userexist=1;
             return res.status(400).json("user may already exist");
@@ -31,16 +34,19 @@ Registration_api.post('/', async (req, res) => {
             Email, 
             contact_number, 
             age, 
-            password
+            password:hashedPassword
         });
 
         // Log to see what data is being sent
+        await newuser.save();
         console.log(newuser); 
 
+        const user2 = await Data.findOne({ Email: Email});
+        const token = jwt.sign({ userId: user2._id }, process.env.SECRET_KEY);
+
         // Await the save operation to ensure the data is saved before sending the response
-        await newuser.save();
         res.userexist=0;
-        res.status(200).json({ message: "Success, user registered" , userId: newuser._id});
+        res.status(200).json({ message: "Success, user registered" ,token, userId: newuser._id});
 
     } catch (err) {
         console.error("Error during registration:", err);

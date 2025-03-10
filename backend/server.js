@@ -24,8 +24,7 @@ app.use(express.json()); // For parsing JSON requests
 app.use(express.urlencoded({ extended: false }));
 
 mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+   
 })
     .then(() => console.log("Connected to MongoDB Atlas"))
     .catch((err) => console.error("Error connecting to MongoDB", err));
