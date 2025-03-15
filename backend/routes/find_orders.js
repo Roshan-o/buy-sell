@@ -17,7 +17,7 @@ find_orders.get('/find', async (req, res) => {
     }
 });
 
-find_orders.get('/cancel', async (req, res) => {
+find_orders.delete('/cancel', async (req, res) => {
     const { order_id } = req.query;
     console.log("order_id:", req.query);
     try {

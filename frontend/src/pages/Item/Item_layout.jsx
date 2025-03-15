@@ -4,8 +4,8 @@ import { useAppContext } from "../../MyContext";
 const ItemLayout = ({ item_info}) => {
 
 const { info } = useAppContext();
-    if (!item_info) return null; // ✅ Avoid errors if item_info is undefined
-    const userId = info.userId; // ✅ Extract userId from context
+    if (!item_info) return null; 
+    const userId = info.userId; 
 
     const { itemname, itemcategory, itemdescription, itemprice } = item_info;
     
@@ -15,8 +15,8 @@ const { info } = useAppContext();
         try {
             console.log('userId:', userId);
             const response = await axios.post('http://localhost:8000/add_to_cart', {
-                item_info: item_info, // ✅ Corrected
-                user_id: userId, // ✅ Pass userId from props
+                item_info: item_info,
+                user_id: userId
             });
 
             if (response.status === 200) {

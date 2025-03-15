@@ -6,7 +6,7 @@ const Order_item=({fetchOrders,items_info})=> {
   const { itemname, itemcategory, itemdescription, itemprice ,itemotp} = items_info;
   const handle_cancel = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/orders/cancel', {
+      const response = await axios.delete('http://localhost:8000/orders/cancel', {
         params: {
           order_id: items_info._id
         }

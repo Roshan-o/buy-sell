@@ -13,7 +13,6 @@ function Cart() {
   
   const lo = useLocation();
   const getCart = async () => {
-    // setItems([]);
     console.log('Fetching items...');
     try {
       const response = await axios.get('http://localhost:8000/cart', {

@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true }, // Ensure this is defined
 });
 
-// Create the model from the schema
 const Data = mongoose.model('User', userSchema);
 
 export default Data;

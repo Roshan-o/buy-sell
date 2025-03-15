@@ -21,7 +21,7 @@ function ItemsShow() {
                 const response = await axios.get("http://localhost:8000/Home/items", {
                     params: {
                         search: search,
-                        categories: category,
+                        categories: category
                     },
                 });
                 console.log("Items found:", response.data);

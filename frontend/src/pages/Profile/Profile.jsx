@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+// import { useParams } from "react-router-dom";
+// import axios from "axios";
 import Navbar from "../Home/Navbar";
-
+import { useAppContext } from "../../MyContext";
 
 function F({ first, second }) {
   return (
@@ -17,26 +17,32 @@ function Profile() {
   const handleEdit=()=>{
   
   }
-  const { userId } = useParams();
+  // const { userId } = useParams();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); 
-
+  // const [loading, setLoading] = useState(true); 
+  const { info } = useAppContext();
+  
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8000/profile/${userId}`);
-        setUser(response.data);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      } finally {
-        setLoading(false); // ✅ Stop loading after fetching
-      }
-    };
+    setUser(info);
+  }, [info]); // Only runs when `info` changes
 
-    fetchUser();
-  }, [userId]);
 
-  if (loading) return <div className="text-center mt-10">Loading...</div>; // ✅ Show loading indicator
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     try {
+  //       const response = await axios.get(`http://localhost:8000/profile/${userId}`);
+  //       setUser(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching user:", error);
+  //     } finally {
+  //       setLoading(false); // ✅ Stop loading after fetching
+  //     }
+  //   };
+
+  //   fetchUser();
+  // }, [userId]);
+
+  // if (loading) return <div className="text-center mt-10">Loading...</div>; // ✅ Show loading indicator
   if (!user) return <div className="text-center mt-10">User not found...</div>; // ✅ Handle case where user is not found
 
   return (

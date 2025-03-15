@@ -28,6 +28,7 @@ login_api.post('/', async (req, res) => {
         // console.log(user);
         // console.log("Login successful");
         // Respond with user data (excluding sensitive data like password)
+
         const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
         res.status(200).json({
             token,userInfo:user

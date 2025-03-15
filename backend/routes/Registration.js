@@ -14,11 +14,10 @@ Registration_api.post('/', async (req, res) => {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     try {
-        // Check if user already exists by Email or contact_number
         const user = await Data.findOne({
             $or: [
-                { Email: { $regex: `^${Email}$`, $options: 'i' } }, // Case-insensitive Email search
-                { contact_number } // Exact match for contact_number
+                { Email: { $regex: `^${Email}$`, $options: 'i' } }, 
+                { contact_number } 
             ]
         });
         
@@ -27,7 +26,6 @@ Registration_api.post('/', async (req, res) => {
             return res.status(400).json("user may already exist");
         }
 
-        // Create a new user document
         const newuser = new Data({
             firstname, 
             lastname, 
