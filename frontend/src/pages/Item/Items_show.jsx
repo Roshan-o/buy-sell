@@ -53,7 +53,7 @@ function ItemsShow() {
 
 
     return (
-        <>
+        <div className="bg-gray-400 min-h-screen">
             <Navbar />
             <div className="bg-gray-400 w-full h-screen flex flex-col items-center">
                 <h1 className="text-4xl font-bold mt-4 mb-4">Items</h1>
@@ -63,7 +63,7 @@ function ItemsShow() {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

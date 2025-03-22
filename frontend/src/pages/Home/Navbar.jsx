@@ -1,103 +1,70 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { useAppContext } from "../../MyContext";
 import { Toaster, toast } from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
-
+import { Menu, X } from "lucide-react";
 
 function getUserIdFromToken() {
-  const token = localStorage.getItem("userToken"); // Retrieve token from storage
+  const token = localStorage.getItem("userToken");
   if (!token) return null;
   try {
     const decoded = jwtDecode(token);
-    return decoded.user; // Adjust based on your token structure
+    return decoded.user;
   } catch (error) {
     console.error("Invalid token", error);
     return null;
   }
 }
 
-
-
-
-
 function Navbar() {
   const navigate = useNavigate();
-  // const { info, change_info } = useAppContext();
-
   const info = getUserIdFromToken();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
-  const notifye = (message) => toast.error(message);
-  const notifys = (message) => toast.success(message);
-
-  // Handle profile navigation
   const profile_handle = () => {
     if (info) {
       navigate(`/profile/${info.userId}`);
     } else {
-      console.error("User ID not found in context");
-      navigate("/"); // Redirect to home if no user
+      navigate("/");
     }
   };
 
-  // Handle logout
   const handleLogout = () => {
-    // change_info({});  // Clear user info from context
-    
     localStorage.removeItem("userToken");
     localStorage.removeItem("userId");
-    navigate("/"); // Redirect to home page after logout
+    navigate("/");
   };
 
-  // Handle search navigation
   const handle_search = () => {
-    navigate('/home/items', { state: {search: search,category: category } });
+    navigate("/home/items", { state: { search: search, category: category } });
   };
 
   return (
-    <nav className="py-2 flex justify-center gap-x-10 items-center">
-      {/* Profile button */}
-      <button
-        onClick={profile_handle}
-        className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
-      >
-        {info.userDetails.lastname ? info.userDetails.lastname : "Profile"}
-      </button>
-      {/* Home Link */}
-      <Link
-        to="/home"
-        className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
-      >
-        Home
-      </Link>
+    <nav className="bg-white shadow-md py-3 px-5 flex items-center justify-between">
 
-      {/* Cart Link */}
-      <Link
-        to="/cart"
-        className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
-      >
-        Cart
-      </Link>
+      <div className="flex items-center space-x-4">
+        <button onClick={profile_handle} className="text-gray-700 font-semibold">
+          {info?.userDetails?.lastname || "Profile"}
+        </button>
+        <Link to="/home" className="hidden md:inline text-gray-700 font-semibold">Home</Link>
+        <Link to="/cart" className="hidden md:inline text-gray-700 font-semibold">Cart</Link>
+      </div>
 
-      {/* Search Bar */}
-      <div className="flex items-center">
+
+      <div className="hidden md:flex flex-grow items-center justify-center space-x-2">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder="Search items..."
-          className="bg-gray-300 h-10 px-2 rounded"
+          className="bg-gray-200 h-10 px-2 rounded w-full max-w-sm"
         />
-      </div>
-
-      {/* Category Selection */}
-      <div>
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="bg-gray-300 h-10 rounded"
+          className="bg-gray-200 h-10 rounded px-2"
         >
           <option value="">All Categories</option>
           <option value="Electronics">Electronics</option>
@@ -106,44 +73,36 @@ function Navbar() {
           <option value="Food">Food</option>
           <option value="Fitness">Fitness</option>
         </select>
+        <button onClick={handle_search} className="bg-blue-500 text-white px-4 py-2 rounded">
+          Search
+        </button>
       </div>
 
-      {/* Search Button */}
-      <button
-        onClick={handle_search}
-        className="bg-gray-300 rounded text-sm px-4 h-10 hover:border"
-      >
-        Search
+
+      <div className="hidden md:flex items-center space-x-4">
+        <Link to="/orders" className="text-gray-700 font-semibold">Orders</Link>
+        <Link to="/delivary" className="text-gray-700 font-semibold">Delivery</Link>
+        <Link to="/history" className="text-gray-700 font-semibold">History</Link>
+        <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
+      </div>
+
+      <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
+        {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Orders Link */}
-      <Link
-        to="/orders"
-        className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
-      >
-        Orders
-      </Link>
-      <Link 
-      to='/delivary'
-      className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
-      >
-        Delivary
-      </Link>
-      {/* History Link */}
-      <Link
-        to="/history"
-        className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
-      >
-        History
-      </Link>
 
-      {/* Logout Button */}
-      <button
-        onClick={handleLogout}
-        className="hover:bg-red-500 rounded-2xl text-sm h-8 px-4 hover:drop-shadow-md content-center"
-      >
-        Logout
-      </button>
+      <div className={`absolute top-14 left-0 w-full bg-white shadow-md transition-all duration-300 ${isOpen ? "h-auto opacity-100" : "h-0 opacity-0 overflow-hidden"}`}>
+        <div className="flex flex-col items-center space-y-4 py-4">
+          <Link to="/home" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>Home</Link>
+          <Link to="/cart" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>Cart</Link>
+          <Link to="/orders" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>Orders</Link>
+          <Link to="/delivary" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>Delivery</Link>
+          <Link to="/history" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>History</Link>
+          <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">
+            Logout
+          </button>
+        </div>
+      </div>
       <Toaster />
     </nav>
   );

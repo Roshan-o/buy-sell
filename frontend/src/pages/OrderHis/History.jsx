@@ -40,7 +40,7 @@ function History() {
     fetchHistory();
   },[location]);
   return (
-    <>
+    <div className=' bg-gray-400 h-screen'>
     <Navbar/>
     <div className="flex flex-col items-center justify-center">
       <h1 className="text-4xl">Order History</h1>
@@ -48,7 +48,7 @@ function History() {
         <History_item key={index} items_info={item} />
       ))}
     </div>
-    </>
+    </div>
   )
 }
 

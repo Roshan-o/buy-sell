@@ -45,7 +45,7 @@ const Delivary = () => {
     }, [location]);
 
     return (
-        <>
+        <div className='bg-gray-400 h-screen'>
             <Navbar />
             <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-gray-400'>Delivary</h1>
             <div className="bg-gray-400 w-full h-screen flex flex-col items-center">
@@ -55,7 +55,7 @@ const Delivary = () => {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     )
 };
 
