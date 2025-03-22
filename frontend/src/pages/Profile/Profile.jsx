@@ -55,7 +55,7 @@ function Profile() {
   if (!user) return <div className="text-center mt-10">User not found...</div>; 
 
   return (
-    <div className="bg-gray-400 w-full h-screen">
+    <div className="bg-[#90e0bb] w-full h-screen">
       <Navbar />
       <p className="text-4xl font-bold my-3 text-center">Your Account</p>
       <div className="flex justify-center items-center">
@@ -64,8 +64,8 @@ function Profile() {
           <F first="Last name" second={user.userDetails.lastname} />
           <F first="Contact Number" second={user.userDetails.contact_number} />
           <F first="Email address" second={user.userDetails.Email} />
-          <button className="bg-gray-400 px-2 py-1 mb-2 rounded w-full"
-          >Edit</button>
+          {/* <button className="bg-[#696ac8] px-2 py-1 mb-2 rounded w-full"
+          >Edit</button> */}
         </div>
       </div>
     </div>

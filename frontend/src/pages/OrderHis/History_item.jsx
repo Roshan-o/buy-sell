@@ -12,8 +12,8 @@ const History_item=({item})=> {
   const { itemname, itemcategory, itemdescription, itemprice } = item;
   // console.log('items_info: at his item', items_info);
   return (
-    <div className="bg-gray-300 p-5 rounded m-3">
-            <h2 className="text-4xl">{itemname}</h2>
+    <div className="bg-[#225f6a] p-4 rounded text-white flex-col m-3">
+            <h2 className="text-4xl text-center">{itemname}</h2>
             <p>Category: {itemcategory}</p>
             <p>{itemdescription}</p>
             <p>Price: ${itemprice}</p>

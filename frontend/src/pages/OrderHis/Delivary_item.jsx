@@ -44,20 +44,20 @@ const Delivary_items = ({fetchdelivaryitems,item_info}) => {
 
   return (
     <>
-    <div className="bg-gray-300 p-5 rounded">
-      <h2 className="text-4xl">{itemname}</h2>
+    <div className="bg-[#225f6a] p-5 rounded text-white flex-col">
+      <h2 className="text-4xl text-center">{itemname}</h2>
       <p>Category: {itemcategory}</p>
       <p>{itemdescription}</p>
       <p>Price: ${itemprice}</p>
-      <div className='flex flex-row'>
+      {/* < className='flex flex-row'> */}
 
-      <input type="Number" placeholder="Enter otp" value={otp} onChange={(e)=>setOtp(e.target.value)} className="bg-gray-600 rounded p-1 px-2 w-full my-2 mx-1" />
-        <button className="bg-gray-600 rounded p-1 px-2 w-full my-2" onClick={handle_confirm}>
+      <input type="Number" placeholder="Enter otp" value={otp} onChange={(e)=>setOtp(e.target.value)} className="bg-[#696ac8] text-[#90e0bb] rounded p-1 px-2 w-full my-1 mx-1" />
+        <button className="bg-[#696ac8] text-[#90e0bb] font-bold rounded p-1 px-2 w-full my-2" onClick={handle_confirm}>
           Confirm
         </button>
-        </div>
+        
       <div>
-        <button className="bg-gray-600 rounded p-1 px-2 w-full my-2" onClick={handle_cancel} >
+        <button className="bg-[#696ac8] text-[#90e0bb] font-bold rounded p-1 px-2 w-full my-2" onClick={handle_cancel} >
           cancel
         </button>
       </div>

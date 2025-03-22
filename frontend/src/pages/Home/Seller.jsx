@@ -64,25 +64,25 @@ function Seller() {
 
 
     return (
-        <div className="bg-gray-400 w-full min-h-screen">
+        <div className="bg-[#90e0bb] w-full min-h-screen">
             <Navbar />
             <div className="flex justify-center items-center min-h-screen">
-                <div className="bg-gray-200 grid py-10 px-20 rounded w-fit">
+                <div className="bg-[#225f6a] grid py-10 px-20 rounded w-fit">
                     <form>
                         <div>
-                            <p className="font-semibold mb-1">Name:</p>
+                            <p className="font-semibold mb-1 text-white">Name:</p>
                             <input type='text' value={name} onChange={(e)=>setName(e.target.value)} className="px-2 py-1 mb-2 border-2 rounded w-full" />
                         </div>
                         <div>
-                            <p className="font-semibold mb-1">Price:</p>
+                            <p className="font-semibold mb-1 text-white">Price:</p>
                             <input type='number' value={price} onChange={(e)=>setPrice(e.target.value)} className="px-2 py-1 mb-2 border-2 rounded w-full" />    
                         </div>
                         <div>
-                            <p className="font-semibold mb-1">Description:</p>
+                            <p className="font-semibold mb-1 text-white">Description:</p>
                             <textarea value={description} onChange={(e)=>setDescription(e.target.value)} className="px-2 py-1 mb-2 border-2 rounded w-full" />    
                         </div>
                         <div>
-                            <p className="font-semibold mb-1">Category:</p>
+                            <p className="font-semibold mb-1 text-white">Category:</p>
                             <select value={category} onChange={(e)=>setCategory(e.target.value)} className="px-2 py-1 mb-2 border-2 rounded w-full">
                                 <option value="Electronics">Electronics</option>
                                 <option value="Cloths">Cloths</option>
@@ -91,7 +91,7 @@ function Seller() {
                                 <option value="Fitness">Fitness</option>
                             </select>
                         </div>
-                        <button type="submit" onClick={handle_add} className="bg-gray-400 px-2 py-1 mt-4 rounded w-full">Add</button>
+                        <button type="submit" onClick={handle_add} className="bg-[#696ac8] text-[#90e0bb] px-2 py-1 mt-4 rounded w-full">Add</button>
                         <Toaster />
                     </form>
                 </div>

@@ -94,7 +94,7 @@ const Registration = () => {
   };
 
   return (
-    <div className="bg-gray-400 h-screen flex justify-center items-center">
+    <div className="bg-[#90e0bb] h-screen flex justify-center items-center">
       <form className="bg-gray-300 p-10" onSubmit={CreateAcc}>
         <div className="grid">
           <p className="italic mx-2 font-semibold">User Name:</p>

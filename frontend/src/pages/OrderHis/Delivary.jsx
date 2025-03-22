@@ -45,10 +45,10 @@ const Delivary = () => {
     }, [location]);
 
     return (
-        <div className='bg-gray-400 h-screen'>
+        <div className='bg-[#90e0bb] h-screen'>
             <Navbar />
-            <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-gray-400'>Delivery</h1>
-            <div className="bg-gray-400 w-full h-screen flex flex-col items-center">
+            <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-[#90e0bb]'>Delivery</h1>
+            <div className="bg-[#90e0bb] w-full h-screen flex flex-col items-center">
                 <div className="flex flex-wrap gap-4 justify-center items-center">
                    {delivaryitems.map((order, index) => (
                         <Delivary_item key={index} fetchdelivaryitems={fetchdelivaryitems} item_info={order} />

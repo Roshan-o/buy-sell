@@ -62,7 +62,7 @@ const Login = () => {
   // }, [info]); // This will trigger when `info` changes
 
   return (
-    <div className='bg-gray-400 h-screen flex justify-center items-center'>
+    <div className='bg-[#90e0bb] h-screen flex justify-center items-center'>
       <Toaster />
       <form className='bg-gray-300 p-10' onSubmit={handleLogin}>
         <div className='grid'>

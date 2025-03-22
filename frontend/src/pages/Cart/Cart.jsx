@@ -49,8 +49,8 @@ function Cart() {
   return (
     <>
       <Navbar />
-      <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-gray-400'>Cart</h1>
-      <div className="bg-gray-400 w-full h-screen flex flex-col items-center">
+      <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-[#90e0bb]'>Cart</h1>
+      <div className="bg-[#90e0bb] w-full h-screen flex flex-col items-center">
         {/* <h1 className="text-4xl font-bold mt-4 mb-4">Items</h1> */}
         <div className="flex flex-wrap gap-4 justify-center items-center">
           {items.map((item, index) => (

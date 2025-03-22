@@ -33,7 +33,6 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("userToken");
-    // localStorage.removeItem("userId");
     navigate("/");
   };
 
@@ -42,18 +41,22 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-500 py-3 px-5 flex items-center justify-between">
-
-      <div className="flex items-center space-x-4">
-        <button onClick={profile_handle} className=" text-gray-900 font-semibold">
+    <nav className="bg-[#90e0bb] py-3 px-5 flex">
+      {/* Left Section */}
+      <div className="flex items-center space-x-3">
+        <button onClick={profile_handle} className="text-gray-900 font-semibold underline underline-offset-4">
           {info?.userDetails?.lastname}
         </button>
-        <Link to="/home" className="hidden md:inline text-gray-900 font-semibold">Home</Link>
-        <Link to="/cart" className="hidden md:inline text-gray-700 font-semibold">Cart</Link>
+        <Link to="/home" className="hidden md:inline text-gray-900 font-semibold underline underline-offset-4">
+          Home
+        </Link>
+        <Link to="/cart" className="hidden md:inline text-gray-700 font-semibold underline underline-offset-4">
+          Cart
+        </Link>
       </div>
 
-
-      <div className="md:flex flex-grow items-center justify-center space-x-2">
+      {/* Search Section (Visible on Mobile & Desktop) */}
+      <div className="flex flex-grow items-center justify-center space-x-2 flex-shrink">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -61,48 +64,39 @@ function Navbar() {
           placeholder="Search items..."
           className="bg-gray-200 h-10 px-2 rounded w-full max-w-sm"
         />
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="bg-gray-200 h-10 rounded px-2"
-        >
-          <option value="">All Categories</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Cloths">Cloths</option>
-          <option value="Stationary">Stationary</option>
-          <option value="Food">Food</option>
-          <option value="Fitness">Fitness</option>
-        </select>
         <button onClick={handle_search} className="bg-blue-500 text-white px-4 py-2 rounded">
           Search
         </button>
       </div>
 
-
+      {/* Right Section (Hidden on Mobile) */}
       <div className="hidden md:flex items-center space-x-4">
-        <Link to="/orders" className="text-gray-700 font-semibold">Orders</Link>
-        <Link to="/delivary" className="text-gray-700 font-semibold">Delivery</Link>
-        <Link to="/history" className="text-gray-700 font-semibold">History</Link>
+        <Link to="/orders" className="text-gray-700 font-semibold underline underline-offset-4">Orders</Link>
+        <Link to="/delivary" className="text-gray-700 font-semibold underline underline-offset-4">Delivery</Link>
+        <Link to="/history" className="text-gray-700 font-semibold underline underline-offset-4">History</Link>
         <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
       </div>
 
+      {/* Mobile Menu Toggle Button */}
       <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-
+      {/* Mobile Menu Dropdown (Includes Search) */}
       <div className={`absolute top-14 left-0 w-full bg-white shadow-md transition-all duration-300 ${isOpen ? "h-auto opacity-100" : "h-0 opacity-0 overflow-hidden"}`}>
         <div className="flex flex-col items-center space-y-4 py-4">
+
           <Link to="/home" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/cart" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>Cart</Link>
           <Link to="/orders" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>Orders</Link>
           <Link to="/delivary" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>Delivery</Link>
           <Link to="/history" className="text-gray-700 font-semibold" onClick={() => setIsOpen(false)}>History</Link>
-          <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded">
+          <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded w-full">
             Logout
           </button>
         </div>
       </div>
+
       <Toaster />
     </nav>
   );

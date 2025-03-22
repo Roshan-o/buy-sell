@@ -4,12 +4,12 @@ import Navbar from "./Navbar";
 
 function Home() {
   return (
-    <div>
+    <div className="bg-[#90e0bb] h-screen">
       <Navbar />
       <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-10">
-        <div className="w-full md:w-2/3 text-center md:text-left text-3xl md:text-4xl font-bold">
+        <div className="text-white w-full md:w-2/3 text-center md:text-left text-3xl md:text-4xl font-bold">
           Store. The best way to buy
-          <p className="text-gray-500">the products you love.</p>
+          <p className="text-white">the products you love.</p>
         </div>
         <Link
           to={"/seller"}

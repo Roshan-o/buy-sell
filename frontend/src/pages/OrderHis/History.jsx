@@ -50,9 +50,9 @@ function History() {
   }, [location]);
 
   return (
-    <div className="bg-gray-400 h-screen">
+    <div className="bg-[#90e0bb] h-screen">
       <Navbar />
-      <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-gray-400'>Order History</h1>
+      <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-[#90e0bb]'>Order History</h1>
         {/* <h1 className="text-4xl">Order History</h1> */}
       <div className="flex  items-center justify-center">
         {his.map((order, index) => (

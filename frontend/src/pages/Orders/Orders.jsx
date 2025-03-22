@@ -48,8 +48,8 @@ function Orders() {
   return (
     <>
     <Navbar />
-    <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-gray-400'>Orders</h1>
-    <div className="bg-gray-400 w-full h-screen flex flex-col items-center">
+    <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-[#90e0bb]'>Orders</h1>
+    <div className="bg-[#90e0bb] w-full h-screen flex flex-col items-center">
       <div className="flex flex-wrap gap-4 justify-center items-center">
         {orders.map((order, index) => (
           <Order_item key={index} fetchOrders={fetchOrders} items_info={order} />

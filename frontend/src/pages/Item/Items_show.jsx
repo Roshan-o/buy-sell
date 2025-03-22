@@ -55,7 +55,7 @@ function ItemsShow() {
     return (
         <div className="bg-gray-400 min-h-screen">
             <Navbar />
-            <div className="bg-gray-400 w-full h-screen flex flex-col items-center">
+            <div className="bg-[#90e0bb] w-full h-screen flex flex-col items-center">
                 <h1 className="text-4xl font-bold mt-4 mb-4">Items</h1>
                 <div className="flex flex-wrap gap-4 justify-center items-center">
                     {items.map((item, index) => (
