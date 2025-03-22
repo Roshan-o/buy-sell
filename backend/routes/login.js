@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 
 // Middleware to parse JSON request body
 dotenv.config();
-// Login route with POST method
+// Login route with POST metho
 login_api.post('/', async (req, res) => {
     console.log("Login route hit");
     try {
@@ -20,6 +20,7 @@ login_api.post('/', async (req, res) => {
 
         // Find user by Email and password
         const user = await Data.findOne({ Email: Email });
+        console.log("user deatails from backend login",user);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -28,8 +29,18 @@ login_api.post('/', async (req, res) => {
         // console.log(user);
         // console.log("Login successful");
         // Respond with user data (excluding sensitive data like password)
-
-        const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
+        const userDetails={
+            firstname:user.firstname,
+            lastname:user.lastname,
+            Email:user.Email,
+            contact_number:user.contact_number,
+            age:user.age
+        };
+        const userwithId={
+            userDetails:userDetails,
+            userId:user._id 
+        }
+        const token = jwt.sign({ user:userwithId}, process.env.SECRET_KEY,{ expiresIn: '1h' });
         res.status(200).json({
             token,userInfo:user
         });

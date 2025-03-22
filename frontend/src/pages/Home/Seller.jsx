@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Home/Navbar";
 import { Toaster, toast } from "react-hot-toast";
-import { useAppContext } from "../../MyContext";
+// import { useAppContext } from "../../MyContext";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+function getUserIdFromToken() {
+  const token = localStorage.getItem("userToken"); // Retrieve token from storage
+  if (!token) return null;
+
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.user; // Adjust based on your token structure
+  } catch (error) {
+    console.error("Invalid token", error);
+    return null;
+  }
+}
+
+
 
 function Seller() {
     const navigate = useNavigate();
     const notifye = (message) => toast.error(message);
     const notifys = (message) => toast.success(message);
-    const { info} = useAppContext();
+    // const { info} = useAppContext();
+    const info = getUserIdFromToken();
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);

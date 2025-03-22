@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Toaster, toast } from "react-hot-toast";
-import { useAppContext } from "../../MyContext";
+// import { useAppContext } from "../../MyContext";
 
 const Login = () => {
   const [Email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { info, change_info } = useAppContext();
+  // const { info, change_info } = useAppContext();
   const navigate = useNavigate();
 
   const notifyError = (message) => toast.error(message);
@@ -20,6 +20,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      // login
       const response = await axios.post('http://localhost:8000/login', { Email, password });
 
       if (response.status === 200) {
@@ -33,17 +34,17 @@ const Login = () => {
         // localStorage.setItem("userId", user._id);
 
         // Update user context
-        const infouser = {
-          firstname: user.firstname,
-          lastname: user.lastname,
-          Email: user.Email,
-          contact_number: user.contact_number,
-          age: user.age,
-          userId: user._id,
-        };
+        // const infouser = {
+        //   firstname: user.firstname,
+        //   lastname: user.lastname,
+        //   Email: user.Email,
+        //   contact_number: user.contact_number,
+        //   age: user.age,
+        //   userId: user._id,
+        // };
 
-        change_info(infouser);
-        console.log("Updated info:", infouser); // Debugging updated info
+        // change_info(infouser);
+        // console.log("Updated info:", infouser); // Debugging updated info
 
         // Redirect to profile
         navigate(`/profile/${user._id}`);
@@ -56,9 +57,9 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    console.log("Updated info:", info); // Logs updated info after change_info runs
-  }, [info]); // This will trigger when `info` changes
+  // useEffect(() => {
+  //   console.log("Updated info:", info); // Logs updated info after change_info runs
+  // }, [info]); // This will trigger when `info` changes
 
   return (
     <div className='bg-gray-400 h-screen flex justify-center items-center'>

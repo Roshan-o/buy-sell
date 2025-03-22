@@ -1,11 +1,31 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppContext } from "../../MyContext";
+// import { useAppContext } from "../../MyContext";
 import { Toaster, toast } from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
+
+
+function getUserIdFromToken() {
+  const token = localStorage.getItem("userToken"); // Retrieve token from storage
+  if (!token) return null;
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.user; // Adjust based on your token structure
+  } catch (error) {
+    console.error("Invalid token", error);
+    return null;
+  }
+}
+
+
+
+
 
 function Navbar() {
   const navigate = useNavigate();
-  const { info, change_info } = useAppContext();
+  // const { info, change_info } = useAppContext();
+
+  const info = getUserIdFromToken();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
 
@@ -14,7 +34,7 @@ function Navbar() {
 
   // Handle profile navigation
   const profile_handle = () => {
-    if (info && info.userId) {
+    if (info) {
       navigate(`/profile/${info.userId}`);
     } else {
       console.error("User ID not found in context");
@@ -24,7 +44,7 @@ function Navbar() {
 
   // Handle logout
   const handleLogout = () => {
-    change_info({});  // Clear user info from context
+    // change_info({});  // Clear user info from context
     
     localStorage.removeItem("userToken");
     localStorage.removeItem("userId");
@@ -43,7 +63,7 @@ function Navbar() {
         onClick={profile_handle}
         className="rounded-2xl text-sm px-4 h-10 hover:border content-center"
       >
-        {info.lastname ? info.lastname : "Profile"}
+        {info.userDetails.lastname ? info.userDetails.lastname : "Profile"}
       </button>
       {/* Home Link */}
       <Link

@@ -12,6 +12,7 @@ import add_to_cart from './routes/add_to_cart.js';
 import get_cart from './routes/get_cart.js';
 import cart_actions from './routes/cart_actions.js';
 import find_orders from './routes/find_orders.js';
+import find_history from './routes/find_history.js';
 
 dotenv.config();
 
@@ -49,6 +50,8 @@ app.use('/cart',get_cart);
 app.use('/cart_actions',cart_actions);
 
 app.use('/orders',find_orders);
+
+app.use('/history',find_history);
 
 
 const authenticateToken = (req, res, next) => {

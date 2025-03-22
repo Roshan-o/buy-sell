@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios';
-import { useAppContext } from '../../MyContext';
+// import { useAppContext } from '../../MyContext';
 
 
 const Cart_item = ({fetchitems,item_info}) => {
-   const { info } = useAppContext();
+  //  const { info } = useAppContext();
   // console.log("item_info_incart_item:",item_info);
   const { itemname, itemcategory, itemdescription, itemprice } = item_info;
   const handle_remove = () => {

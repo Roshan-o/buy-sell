@@ -4,6 +4,22 @@ import ItemLayout from "./Item_layout";
 import Navbar from "../Home/Navbar";
 import { useAppContext } from "../../MyContext";
 import { useLocation } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+function getUserIdFromToken() {
+  const token = localStorage.getItem("userToken"); // Retrieve token from storage
+  if (!token) return null;
+
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.user; // Adjust based on your token structure
+  } catch (error) {
+    console.error("Invalid token", error);
+    return null;
+  }
+}
+
+
+
 function ItemsShow() {
     const location = useLocation();
     const { search, category } = location.state;
@@ -12,7 +28,8 @@ function ItemsShow() {
 
     const [items, setItems] = useState([]);
     
-    const { info } = useAppContext();
+    // const { info } = useAppContext();
+    const info = getUserIdFromToken();
     const userId = info.userId;
     useEffect(() => {
         setItems([]);

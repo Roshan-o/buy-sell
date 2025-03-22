@@ -14,7 +14,7 @@ import Delivary from './pages/OrderHis/Delivary';
 
 const ProtectedRoute = ({ element }) => {
     const token = localStorage.getItem("userToken");
-    return token ? element : <Navigate to="/login" replace />;
+    return token ? element : <Navigate to="/Profile" replace />;
 };
 
 function App() {

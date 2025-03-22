@@ -38,9 +38,19 @@ Registration_api.post('/', async (req, res) => {
         // Log to see what data is being sent
         await newuser.save();
         console.log(newuser); 
-
+        const userDetails={
+            firstname,
+            lastname,
+            Email,
+            contact_number,
+            age
+        };
+        userwithId={
+            userDetails:userDetails,
+            userId:user2._id
+        }
         const user2 = await Data.findOne({ Email: Email});
-        const token = jwt.sign({ userId: user2._id }, process.env.SECRET_KEY);
+        const token = jwt.sign({ user:userwithId }, process.env.SECRET_KEY,{ expiresIn: '1h' });
 
         // Await the save operation to ensure the data is saved before sending the response
         res.userexist=0;

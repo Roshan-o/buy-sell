@@ -1,14 +1,29 @@
 import React from 'react'
 import axios from 'axios';
 import Navbar from '../Home/Navbar';
-import { useAppContext } from '../../MyContext';
+// import { useAppContext } from '../../MyContext';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Cart_item from './Cart_item';
+import { jwtDecode } from "jwt-decode";
+
+
+function getUserIdFromToken() {
+  const token = localStorage.getItem("userToken"); // Retrieve token from storage
+  if (!token) return null;
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.user; // Adjust based on your token structure
+  } catch (error) {
+    console.error("Invalid token", error);
+    return null;
+  }
+}
 
 function Cart() {
   const [items, setItems] = useState([]);
-  const { info } = useAppContext();
+  // const { info } = useAppContext();
+  const info = getUserIdFromToken();
   
   
   const lo = useLocation();

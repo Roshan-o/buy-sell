@@ -1,9 +1,25 @@
 import React from 'react';
 import axios from 'axios';
-import { useAppContext } from "../../MyContext";
+// import { useAppContext } from "../../MyContext";
+import { jwtDecode } from "jwt-decode";
+function getUserIdFromToken() {
+  const token = localStorage.getItem("userToken"); // Retrieve token from storage
+  if (!token) return null;
+
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.user; // Adjust based on your token structure
+  } catch (error) {
+    console.error("Invalid token", error);
+    return null;
+  }
+}
+
+
 const ItemLayout = ({ item_info}) => {
 
-const { info } = useAppContext();
+// const { info } = useAppContext();
+const info = getUserIdFromToken();
     if (!item_info) return null; 
     const userId = info.userId; 
 

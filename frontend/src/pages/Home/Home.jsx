@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
-import Catagories from './Catagories'
-import Item_layout from '../Item/item_layout'
 function Home() {
   // console.log("Home")
   return (
