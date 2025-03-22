@@ -33,7 +33,7 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("userToken");
-    localStorage.removeItem("userId");
+    // localStorage.removeItem("userId");
     navigate("/");
   };
 
@@ -42,18 +42,18 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-md py-3 px-5 flex items-center justify-between">
+    <nav className="bg-gray-500 py-3 px-5 flex items-center justify-between">
 
       <div className="flex items-center space-x-4">
-        <button onClick={profile_handle} className="text-gray-700 font-semibold">
-          {info?.userDetails?.lastname || "Profile"}
+        <button onClick={profile_handle} className=" text-gray-900 font-semibold">
+          {info?.userDetails?.lastname}
         </button>
-        <Link to="/home" className="hidden md:inline text-gray-700 font-semibold">Home</Link>
+        <Link to="/home" className="hidden md:inline text-gray-900 font-semibold">Home</Link>
         <Link to="/cart" className="hidden md:inline text-gray-700 font-semibold">Cart</Link>
       </div>
 
 
-      <div className="hidden md:flex flex-grow items-center justify-center space-x-2">
+      <div className="md:flex flex-grow items-center justify-center space-x-2">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}

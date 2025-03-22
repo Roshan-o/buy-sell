@@ -9,15 +9,23 @@ const Delivary_items = ({fetchdelivaryitems,item_info}) => {
       const notifys = (message) => toast.success(message);
     // const { info } = useAppContext();
     // console.log("item_info_incart_item:",item_info);
-    const [otp, setOtp] = useState();
+    const [otp, setOtp] = useState(0);
     const { itemname, itemcategory, itemdescription, itemprice } = item_info;
+    const id = item_info._id;
     const handle_cancel = () => {
         // console.log("item...id:",item_info._id)
-
+        const response=axios.delete('http://localhost:8000/orders/cancel',
+          {
+            params:{
+              order_id:id
+            }
+          }
+        );
+        fetchdelivaryitems();
     }
+    // const id = item_info._id;
     const handle_confirm = () => {
         console.log("confirm");
-        const id = item_info._id;
         const response = axios.get('http://localhost:8000/orders/delivary_confirm', {
             params: {
                 item_id: id,

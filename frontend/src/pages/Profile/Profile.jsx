@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
 // import axios from "axios";
 import Navbar from "../Home/Navbar";
-import { useAppContext } from "../../MyContext";
+// import { useAppContext } from "../../MyContext";
 import { jwtDecode } from "jwt-decode";
 function getUserIdFromToken() {
-  const token = localStorage.getItem("userToken"); // Retrieve token from storage
+  const token = localStorage.getItem("userToken"); 
   if (!token) return null;
 
   try {
     const decoded = jwtDecode(token);
-    return decoded.user; // Adjust based on your token structure
+    return decoded.user; 
   } catch (error) {
     console.error("Invalid token", error);
     return null;
@@ -45,29 +45,14 @@ function Profile() {
             console.log("info at profile:", info);
             return info;
         }
-        return prevUser; // Avoid unnecessary state updates
+        return prevUser; 
     });
 }, [info]);
 
 
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     try {
-  //       const response = await axios.get(`http://localhost:8000/profile/${userId}`);
-  //       setUser(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching user:", error);
-  //     } finally {
-  //       setLoading(false); // ✅ Stop loading after fetching
-  //     }
-  //   };
 
-  //   fetchUser();
-  // }, [userId]);
-
-  // if (loading) return <div className="text-center mt-10">Loading...</div>; // ✅ Show loading indicator
-  if (!user) return <div className="text-center mt-10">User not found...</div>; // ✅ Handle case where user is not found
+  if (!user) return <div className="text-center mt-10">User not found...</div>; 
 
   return (
     <div className="bg-gray-400 w-full h-screen">

@@ -20,7 +20,7 @@ Registration_api.post('/', async (req, res) => {
                 { contact_number } 
             ]
         });
-        
+        console.log(user);
         if (user) {
             res.userexist=1;
             return res.status(400).json("user may already exist");
@@ -45,11 +45,11 @@ Registration_api.post('/', async (req, res) => {
             contact_number,
             age
         };
+        const user2 = await Data.findOne({ Email: Email});
         userwithId={
             userDetails:userDetails,
             userId:user2._id
         }
-        const user2 = await Data.findOne({ Email: Email});
         const token = jwt.sign({ user:userwithId }, process.env.SECRET_KEY,{ expiresIn: '1h' });
 
         // Await the save operation to ensure the data is saved before sending the response

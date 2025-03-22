@@ -40,7 +40,7 @@ login_api.post('/', async (req, res) => {
             userDetails:userDetails,
             userId:user._id 
         }
-        const token = jwt.sign({ user:userwithId}, process.env.SECRET_KEY,{ expiresIn: '1h' });
+        const token = jwt.sign({ user:userwithId}, process.env.SECRET_KEY);
         res.status(200).json({
             token,userInfo:user
         });

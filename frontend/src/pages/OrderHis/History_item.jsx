@@ -1,12 +1,18 @@
 import React from 'react'
-import axios from 'axios';
+// import axios from 'axios';
 
 
-const History_item=({item_info})=> {
-  const { itemname, itemcategory, itemdescription, itemprice } = item_info;
-  // console.log('items_info:', items_info);
+const History_item=({item})=> {
+  if (!item) {
+    console.error("History_item received undefined items_info");
+    return <p>Error: Item info is missing</p>;
+  }
+  console.log("intem info at history element",item);
+  // const { itemname, itemprice, itemcategory, itemdescription } = item_info;
+  const { itemname, itemcategory, itemdescription, itemprice } = item;
+  // console.log('items_info: at his item', items_info);
   return (
-    <div className="bg-gray-300 p-5 rounded">
+    <div className="bg-gray-300 p-5 rounded m-3">
             <h2 className="text-4xl">{itemname}</h2>
             <p>Category: {itemcategory}</p>
             <p>{itemdescription}</p>

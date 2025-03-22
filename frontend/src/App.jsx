@@ -14,7 +14,7 @@ import Delivary from './pages/OrderHis/Delivary';
 
 const ProtectedRoute = ({ element }) => {
     const token = localStorage.getItem("userToken");
-    return token ? element : <Navigate to="/Profile" replace />;
+    return token ? element : <Navigate to="/login" replace />;
 };
 
 function App() {
@@ -33,7 +33,8 @@ function App() {
                     <Route path='/orders' element={<ProtectedRoute element={<Orders />} />} />
                     <Route path='/seller' element={<ProtectedRoute element={<Seller />} />} />
                     <Route path='/delivary' element={<ProtectedRoute element={<Delivary />} />} />
-                    <Route path="/" element={<Navigate to="/login" replace />} />
+                    <Route path='/' element={<ProtectedRoute element={<Profile />} />} />
+                    {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
                 </Routes>
             </BrowserRouter>
         </AppProvider>

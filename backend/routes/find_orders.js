@@ -73,4 +73,11 @@ find_orders.get('/delivary_confirm', async (req, res) => {
 });
 
 
+// find_orders.delete('/delevary_cancel',async(req,res)=>{
+//     const item_id=req.query;
+
+
+// })
+
+
 export default find_orders;

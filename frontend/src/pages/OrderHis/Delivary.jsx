@@ -47,7 +47,7 @@ const Delivary = () => {
     return (
         <div className='bg-gray-400 h-screen'>
             <Navbar />
-            <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-gray-400'>Delivary</h1>
+            <h1 className='flex justify-center items-center py-3 font-semibold text-5xl bg-gray-400'>Delivery</h1>
             <div className="bg-gray-400 w-full h-screen flex flex-col items-center">
                 <div className="flex flex-wrap gap-4 justify-center items-center">
                    {delivaryitems.map((order, index) => (
