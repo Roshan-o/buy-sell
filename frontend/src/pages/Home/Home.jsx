@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-import Chat from "./Chat"
+// import Chat from "./Chat"
 
 function Home() {
   return (
@@ -19,7 +19,7 @@ function Home() {
           SELL
         </Link>
       </div>
-      <Chat />
+      {/* <Chat /> */}
     </div>
   );
 }
